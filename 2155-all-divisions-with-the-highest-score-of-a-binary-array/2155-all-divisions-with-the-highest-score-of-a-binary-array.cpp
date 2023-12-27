@@ -26,17 +26,6 @@ public:
             if(i < nums.size())
                 prev = nums[i];
         }
-//         if(prev == 1)
-//             ones--;
-//         else if(prev == 0)
-//             zeros++;
-        
-//         if(max < ones + zeros){
-//             answer.clear();
-//             answer.push_back(nums.size());
-//         }
-//         else if(max == ones + zeros)
-//             answer.push_back(nums.size());
         return answer;
     }
 };
