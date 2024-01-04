@@ -10,13 +10,7 @@ public:
             if(occ.second == 1)
                 return -1;
             else if(occ.second % 3 == 0)
-                count += occ.second / 3;
-            // else if(occ.second % 3 == 1)
-            //     count += occ.second / 3 + 1;
-            // else if(occ.second % 3 == 2){
-            //     count += occ.second / 3 + 1;
-            //     count += 1;
-            // }   
+                count += occ.second / 3;  
             else
                 count += occ.second / 3 + 1;
         }
