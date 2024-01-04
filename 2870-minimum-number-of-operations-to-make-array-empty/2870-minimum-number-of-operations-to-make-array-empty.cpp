@@ -9,16 +9,16 @@ public:
         for(auto occ : occurence){
             if(occ.second == 1)
                 return -1;
-            else if(occ.second % 3 == 1){
-                count += occ.second / 3 + 1;
-                // count += 2;
-            }
-            else if(occ.second % 3 == 2){
+            else if(occ.second % 3 == 0)
                 count += occ.second / 3;
-                count += 1;
-            }   
+            // else if(occ.second % 3 == 1)
+            //     count += occ.second / 3 + 1;
+            // else if(occ.second % 3 == 2){
+            //     count += occ.second / 3 + 1;
+            //     count += 1;
+            // }   
             else
-                count += occ.second / 3;
+                count += occ.second / 3 + 1;
         }
         return count;
     }
