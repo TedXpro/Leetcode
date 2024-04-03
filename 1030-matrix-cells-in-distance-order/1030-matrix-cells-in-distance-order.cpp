@@ -13,7 +13,7 @@ public:
         sort(answer.begin(), answer.end());
         vector<vector<int>> result;
         for(vector<int>& ans : answer){
-            result.push_back(vector<int>(ans.begin() + 1, ans.end()));
+            result.push_back({ans.begin() + 1, ans.end()});
         }
         return result;
     }
