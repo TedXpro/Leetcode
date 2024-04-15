@@ -11,22 +11,20 @@
  */
 class Solution {
 private:
-    void findSum(TreeNode* nodeptr, int prev, int &answer){
+    int findSum(TreeNode* nodeptr, int prev){
         if(nodeptr){
             prev += nodeptr->val;
-            if(nodeptr->left == nullptr && nodeptr->right == nullptr){
-                answer += prev;
-                return;
-            }
+            if(nodeptr->left == nullptr && nodeptr->right == nullptr)
+                return prev;
+
             prev *= 10;
-            findSum(nodeptr->left, prev, answer);
-            findSum(nodeptr->right, prev, answer);
+            return findSum(nodeptr->left, prev) + findSum(nodeptr->right, prev);
         }
+        return 0;
     }
 public:
     int sumNumbers(TreeNode* root) {
-        int answer = 0;
-        findSum(root, 0, answer);
+        int answer = findSum(root, 0);
         return answer;
     }
 };
