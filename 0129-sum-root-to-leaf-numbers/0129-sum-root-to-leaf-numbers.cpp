@@ -14,10 +14,10 @@ private:
     void findSum(TreeNode* nodeptr, int prev, int &answer){
         if(nodeptr){
             prev += nodeptr->val;
-            if(nodeptr->left == nullptr && nodeptr->right == nullptr){
+            if(nodeptr->left == nullptr && nodeptr->right == nullptr)
                 answer += prev;
-                return;
-            }
+            //     return;
+            // }
             prev *= 10;
             findSum(nodeptr->left, prev, answer);
             findSum(nodeptr->right, prev, answer);
