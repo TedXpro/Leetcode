@@ -12,8 +12,7 @@
 class Solution {
     void findSmallest(TreeNode* nodeptr, string& s, string& answer){
         if(nodeptr){
-            // s += static_cast<char>(nodeptr->val + 97);
-            s.push_back(nodeptr->val + 'a');
+            s += static_cast<char>(nodeptr->val + 97);
             if(nodeptr->left == nullptr && nodeptr->right == nullptr){
                 string res = s;
                 reverse(res.begin(), res.end());
