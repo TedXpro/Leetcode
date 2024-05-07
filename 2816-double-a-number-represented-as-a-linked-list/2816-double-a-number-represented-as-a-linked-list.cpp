@@ -11,18 +11,26 @@
 class Solution {
 public:
     ListNode* doubleIt(ListNode* head) {
-        long long number = 0;
+        stack<int> number;
         while(head){
-            number = number * 10 + head->val;
+            number.push(head->val);
             head = head->next;
         }
 
-        number *= 2;
-        ListNode* answer = new ListNode(number % 10);
-        number /= 10;
-        while(number > 0) {
-            ListNode * newNode = new ListNode(number % 10);
-            number /= 10;
+        ListNode* answer = new ListNode((number.top() * 2) % 10);
+        int rem = number.top() * 2 / 10;
+        number.pop();
+        while(!number.empty()) {
+            int curr = rem + number.top() * 2;
+            number.pop();
+            rem = curr / 10;
+            ListNode * newNode = new ListNode(curr % 10);
+            
+            newNode->next = answer;
+            answer = newNode;
+        }
+        if(rem != 0){
+            ListNode* newNode = new ListNode(rem);
             newNode->next = answer;
             answer = newNode;
         }
