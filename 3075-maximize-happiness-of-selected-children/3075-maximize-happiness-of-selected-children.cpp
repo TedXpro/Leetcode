@@ -7,8 +7,7 @@ public:
         for(int hap : happiness){
             answer += max(0, hap - decreament);
             decreament++;
-            k--;
-            if(k == 0)
+            if(--k == 0)
                 break;
         }
         return answer;
