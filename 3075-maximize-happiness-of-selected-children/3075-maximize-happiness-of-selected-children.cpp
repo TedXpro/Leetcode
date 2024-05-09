@@ -5,8 +5,7 @@ public:
         sort(happiness.begin(), happiness.end(), greater<int>());
         int decreament = 0;
         for(int hap : happiness){
-            if(hap - decreament > 0)
-                answer += hap - decreament;
+            answer += max(0, hap - decreament);
             decreament++;
             k--;
             if(k == 0)
