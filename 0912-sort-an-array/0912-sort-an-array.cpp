@@ -7,7 +7,6 @@ private:
             res[index++] = nums[left] < nums[right] ? nums[left++] : nums[right++];
         }
          
-        // leftovers
         while(left <= currMid){
             res[index++] = nums[left++];
         }
@@ -16,7 +15,6 @@ private:
             res[index++] = nums[right++];
         }
 
-        // copy result back to num
         for(int i = currStart; i <= currEnd; i++){
             nums[i] = res[i - currStart];
         }        
