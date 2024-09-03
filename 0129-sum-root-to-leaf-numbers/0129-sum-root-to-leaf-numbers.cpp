@@ -24,7 +24,6 @@ private:
     }
 public:
     int sumNumbers(TreeNode* root) {
-        int answer = findSum(root, 0);
-        return answer;
+       return findSum(root, 0);
     }
 };
