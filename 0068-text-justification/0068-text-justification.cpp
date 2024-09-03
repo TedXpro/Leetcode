@@ -38,8 +38,6 @@ public:
         bool inserted = false;
         for(string &word : words){
             if(currLength + word.length() > maxWidth){
-                cout << currLength << ": " << currLength + word.length() << " word: " << word << endl;
-                cout << "curr: " << curr << "!! " << curr.length() <<  endl;
                 if(numWords == 1){
                     answer.push_back(construct(curr, currLength - 1, maxWidth, numWords, true));
                 }
@@ -68,7 +66,3 @@ public:
         return answer;
     }
 };
-
-
-// ["This    is    an","example  of  text","justification.  "]
-// ["This    is    an","example  of text","justification.  "]
