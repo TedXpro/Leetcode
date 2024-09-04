@@ -28,7 +28,6 @@ public:
                     y += directions[currDir][1];
                 }
             }
-            cout << x << "," << y << endl;
             answer = max(answer, x * x + y * y);
         }
         return answer;
