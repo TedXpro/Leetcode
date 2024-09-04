@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/walking-robot-simulation/">874. Walking Robot Simulation</a></h2><h3>Medium</h3><hr><div><p>A robot on an infinite XY-plane starts at point <code>(0, 0)</code> facing north. The robot can receive a sequence of these three possible types of <code>commands</code>:</p>
+<h2><a href="https://leetcode.com/problems/walking-robot-simulation/?envType=daily-question&envId=2024-09-04">874. Walking Robot Simulation</a></h2><h3>Medium</h3><hr><p>A robot on an infinite XY-plane starts at point <code>(0, 0)</code> facing north. The robot can receive a sequence of these three possible types of <code>commands</code>:</p>
 
 <ul>
 	<li><code>-2</code>: Turn left <code>90</code> degrees.</li>
@@ -23,7 +23,8 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> commands = [4,-1,3], obstacles = []
+<pre>
+<strong>Input:</strong> commands = [4,-1,3], obstacles = []
 <strong>Output:</strong> 25
 <strong>Explanation:</strong> The robot starts at (0, 0):
 1. Move north 4 units to (0, 4).
@@ -34,7 +35,8 @@ The furthest point the robot ever gets from the origin is (3, 4), which squared 
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> commands = [4,-1,4,-2,4], obstacles = [[2,4]]
+<pre>
+<strong>Input:</strong> commands = [4,-1,4,-2,4], obstacles = [[2,4]]
 <strong>Output:</strong> 65
 <strong>Explanation:</strong> The robot starts at (0, 0):
 1. Move north 4 units to (0, 4).
@@ -47,7 +49,8 @@ The furthest point the robot ever gets from the origin is (1, 8), which squared 
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> commands = [6,-1,-1,6], obstacles = []
+<pre>
+<strong>Input:</strong> commands = [6,-1,-1,6], obstacles = []
 <strong>Output:</strong> 36
 <strong>Explanation:</strong> The robot starts at (0, 0):
 1. Move north 6 units to (0, 6).
@@ -67,4 +70,3 @@ The furthest point the robot ever gets from the origin is (0, 6), which squared 
 	<li><code>-3 * 10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 3 * 10<sup>4</sup></code></li>
 	<li>The answer is guaranteed to be less than <code>2<sup>31</sup></code>.</li>
 </ul>
-</div>
