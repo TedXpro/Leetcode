@@ -13,10 +13,8 @@ class Solution {
     bool dfs(TreeNode* nodeptr, int &targetSum, int currTotal){
         if(nodeptr){
             currTotal += nodeptr->val;
-            if(currTotal == targetSum){
-                if(!nodeptr->left && !nodeptr->right){
-                    return true;
-                }
+            if(currTotal == targetSum && !nodeptr->left && !nodeptr->right){
+                return true;    
             }
 
             return dfs(nodeptr->left, targetSum, currTotal) || dfs(nodeptr->right, targetSum, currTotal);
