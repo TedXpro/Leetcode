@@ -10,37 +10,29 @@
  * };
  */
 class Solution {
-    TreeNode* dfsConstruct(vector<int>& preorder, vector<int> currInorder, int& index){
+    TreeNode* dfsConstruct(vector<int>& preorder, vector<int>& inorder, int start, int end, int& index){
         if(index >= preorder.size()){
             return nullptr;
         }
         TreeNode* currNode = new TreeNode(preorder[index]);
-        vector<int> nums;
-        int start = 0;
-        for(int i = 0; i < currInorder.size(); i++){
-            if(currInorder[i] == preorder[index]){
-                start = i;
+        int leftoff = start;
+        for(int i = start; i < end; i++){
+            if(inorder[i] == preorder[index]){
+                leftoff = i;
                 break;
             }
-            nums.push_back(currInorder[i]);
         }
 
-        if(nums.size() == 0){
+        if(leftoff - start == 0){
             currNode->left = nullptr;
         } else {
-        
-            currNode->left = dfsConstruct(preorder, nums, ++index);
+            currNode->left = dfsConstruct(preorder, inorder, start, leftoff, ++index);
         }
 
-        nums.clear();
-        for(int i = start + 1; i < currInorder.size(); i++){
-            nums.push_back(currInorder[i]);
-        }
-
-         if(nums.size() == 0){
+         if(end - (leftoff + 1) == 0){
             currNode->right = nullptr;
         } else {
-            currNode->right = dfsConstruct(preorder, nums, ++index);
+            currNode->right = dfsConstruct(preorder, inorder, leftoff + 1, end, ++index);
         }
 
         return currNode;
@@ -48,6 +40,6 @@ class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int index = 0;
-        return dfsConstruct(preorder, inorder, index);
+        return dfsConstruct(preorder, inorder, 0, inorder.size(), index);
     }
 };
