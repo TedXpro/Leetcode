@@ -19,9 +19,7 @@ class Solution {
                 answer = nodeptr->val;
                 return;
             }
-            if(nodeptr->right){
-                inorder(nodeptr->right, k, ++index, answer);
-            }
+            inorder(nodeptr->right, k, index, answer);
         }
     }
 public:
