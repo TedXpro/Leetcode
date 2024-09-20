@@ -1,25 +1,30 @@
 class Solution {
 public:
     string shortestPalindrome(string s) {
-        int length = s.length();
-        if(s == ""){
-            return s;
-        }
+        string reversedString = string(s.rbegin(), s.rend());
+        string combinedString = s + "#" + reversedString;
+        vector<int> prefixTable = buildPrefixTable(combinedString);
 
-        int left = 0; 
-        for(int right = length - 1; right >= 0; right--){
-            if(s[right] == s[left]){
-                left++;
+        int palindromeLength = prefixTable[combinedString.length() - 1];
+
+        string suffix = reversedString.substr(0, s.length() - palindromeLength);
+        return suffix + s;
+    }
+
+private:
+    vector<int> buildPrefixTable(const string& s) {
+        vector<int> prefixTable(s.length(), 0);
+        int length = 0;
+
+        for (int i = 1; i < s.length(); i++) {
+            while (length > 0 && s[i] != s[length]) {
+                length = prefixTable[length - 1];
             }
+            if (s[i] == s[length]) {
+                length++;
+            }
+            prefixTable[i] = length;
         }
-
-        if(left == length){
-            return s;
-        }
-
-        string revS = s.substr(left);
-        reverse(revS.begin(), revS.end());
-
-        return revS + shortestPalindrome(s.substr(0, left)) + s.substr(left);
+        return prefixTable;
     }
 };
