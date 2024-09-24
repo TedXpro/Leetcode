@@ -47,14 +47,13 @@ class Solution {
         return slow;
     }
 
-public:
-    ListNode* sortList(ListNode* head) {
-        if(!head || !head->next){
-            return head;
+    ListNode* mergeSort(ListNode* nodeptr){
+        if(!nodeptr || !nodeptr->next){
+            return nodeptr;
         }     
 
-        ListNode* left = head;
-        ListNode* right = getMid(head);
+        ListNode* left = nodeptr;
+        ListNode* right = getMid(nodeptr);
         ListNode* temp = right->next;
         right->next = nullptr;
         right = temp;
@@ -63,5 +62,10 @@ public:
         right = sortList(right);
 
         return merge(left, right);
+    }
+
+public:
+    ListNode* sortList(ListNode* head) {
+        return mergeSort(head);
     }
 };
