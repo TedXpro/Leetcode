@@ -24,10 +24,10 @@ private:
             return false;
         }
 
-        bool curr1 = traverse(nodeptr1->left, nodeptr2->left) && traverse(nodeptr1->right, nodeptr2->right);
-        bool curr2 = traverse(nodeptr1->left, nodeptr2->right) && traverse(nodeptr1->right, nodeptr2->left);
+        bool noFlip = traverse(nodeptr1->left, nodeptr2->left) && traverse(nodeptr1->right, nodeptr2->right);
+        bool flip = traverse(nodeptr1->left, nodeptr2->right) && traverse(nodeptr1->right, nodeptr2->left);
 
-        return curr1 || curr2;
+        return noFlip || flip;
     }
 public:
     bool flipEquiv(TreeNode* root1, TreeNode* root2) {
