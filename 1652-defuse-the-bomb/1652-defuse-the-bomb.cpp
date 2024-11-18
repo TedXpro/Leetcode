@@ -1,4 +1,23 @@
 class Solution {
+    void construct(vector<int>& code, vector<int>& answer, int left, int right, int currSum){
+        int index = 1;
+        while(index < code.size()){
+            if(right == code.size()){
+                right = 0;
+            } 
+            currSum -= code[left];
+            left++;
+            if(left == code.size()){
+                left = 0;
+            }
+            currSum += code[right];
+            answer.push_back(currSum);
+            right++;
+
+            index++;
+        }
+        // return answer;
+    }
 public:
     vector<int> decrypt(vector<int>& code, int k) {
         if(k == 0){
@@ -18,23 +37,7 @@ public:
             }
             vector<int> answer;
             answer.push_back(currSum);
-            int left = 1, right = index;
-            index = 1;
-            while(index < code.size()){
-                if(right == code.size()){
-                    right = 0;
-                } 
-                currSum -= code[left];
-                left++;
-                if(left == code.size()){
-                    left = 0;
-                }
-                currSum += code[right];
-                answer.push_back(currSum);
-                right++;
-
-                index++;
-            }
+            construct(code, answer, 1, index, currSum);
             return answer;
         }
 
@@ -53,24 +56,7 @@ public:
         }
         vector<int> answer;
         answer.push_back(currSum);
-        int left = index + 1, right = 0;
-        index = 1;
-        while(index < code.size()){
-            if(right == code.size()){
-                right = 0;
-            } 
-            if(left == code.size()){
-                left = 0;
-            }
-            currSum -= code[left];
-            left++;
-            
-            currSum += code[right];
-            answer.push_back(currSum);
-            right++;
-
-            index++;
-        }
+        construct(code, answer, index + 1, 0, currSum);
         return answer;
     }
 };
