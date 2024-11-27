@@ -1,11 +1,11 @@
 class Solution {
 private:
-    int findMinDistance(unordered_map<int, vector<int>> &graph, int n, int curr, vector<int>& memo){
+    int findMinDistance(unordered_map<int, vector<int>> &graph, int n, int curr, unordered_map<int, int>& memo){
         if(curr == n - 1){
             return 0;
         }
 
-        if(memo[curr] != -1){
+        if(memo.find(curr) != memo.end()){
             return memo[curr];
         }
 
@@ -18,7 +18,7 @@ private:
     }
 public:
     vector<int> shortestDistanceAfterQueries(int n, vector<vector<int>>& queries) {
-        vector<int> memo(n, -1);
+        unordered_map<int, int> memo;
         unordered_map<int, vector<int>> graph;
         for(int i = 0; i < n - 1; i++){
             graph[i].push_back(i + 1);
@@ -30,7 +30,6 @@ public:
 
             answer.push_back(findMinDistance(graph, n, 0, memo));
             memo.clear();
-            memo.resize(n, -1);
         }
 
         return answer;
