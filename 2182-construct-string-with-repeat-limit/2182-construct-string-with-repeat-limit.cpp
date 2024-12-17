@@ -10,7 +10,6 @@ public:
         
         while(!memo.empty()){
             auto itr = memo.begin();
-            cout << "Current: " << itr->first << " ##### " << itr->second << endl;
             int count = 0;
             for(int i = 0; i < itr->second; i++){
                 answer += itr->first;
@@ -27,8 +26,6 @@ public:
                     count = 0;
                 }
             }
-            cout << "CurrentAnswer : ===== " << answer << endl;
-
             memo.erase(itr);
         }
 
