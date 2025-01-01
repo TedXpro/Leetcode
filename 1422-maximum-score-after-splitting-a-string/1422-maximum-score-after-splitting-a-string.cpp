@@ -1,21 +1,25 @@
 class Solution {
 public:
     int maxScore(string s) {
-        int left = s[0] == '0'? 1 : 0;
-        int right = 0;
-        for(int i = 1; i < s.length(); i++){
-            if(s[i] == '1')
-                right++;
+        int one = 0;
+        for(char ch : s){
+            if (ch == '1'){
+                one++;
+            }
         }
 
-        int maximum = left + right;
-        for(int i = 1; i < s.length() - 1; i++){
-            if(s[i] == '0')
-                left++;
-            else 
-                right--;
-            maximum = max(left + right, maximum);
+        int answer = 0;
+        int zero = 0;
+        for (int i = 0; i < s.length() - 1; i++){
+            if(s[i] == '1'){
+                one--;
+            } else {
+                zero++;
+            }
+
+            answer = max(answer, one + zero);
         }
-        return maximum;
+
+        return answer;
     }
 };
