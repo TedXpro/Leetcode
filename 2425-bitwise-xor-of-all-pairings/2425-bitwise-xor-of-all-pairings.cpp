@@ -1,13 +1,19 @@
 class Solution {
 public:
     int xorAllNums(vector<int>& nums1, vector<int>& nums2) {
-        unordered_set<int> set1(nums1.begin(), nums1.end());
-        unordered_set<int> set2(nums2.begin(), nums2.end());
+        unordered_map<int, long> memo;
+        for(int num : nums1){
+            memo[num] += nums2.size();
+        }
+
+        for(int num : nums2){
+            memo[num] += nums1.size();
+        }
 
         int answer = 0;
-        for(auto s : set1){
-            for (auto s2 : set2){
-                answer ^= (s ^ s2);
+        for(auto m : memo){
+            if(m.second % 2 == 1){
+                answer ^= m.first;
             }
         }
 
