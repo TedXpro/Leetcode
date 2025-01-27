@@ -1,7 +1,5 @@
 class Solution {
 public:
-    // Performs DFS and returns true if there's a path between src and target
-    // and false otherwise.
     bool isPrerequisite(unordered_map<int, vector<int>>& adjList,
                         vector<bool>& visited, int src, int target) {
         visited[src] = 1;
@@ -30,7 +28,6 @@ public:
 
         vector<bool> answer;
         for (auto q : queries) {
-            // Reset the visited array for each query.
             vector<bool> visited(numCourses, false);
             answer.push_back(isPrerequisite(adjList, visited, q[0], q[1]));
         }
