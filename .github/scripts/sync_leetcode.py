@@ -26,6 +26,17 @@ LANG_EXTENSIONS = {
     "golang": "go", "rust": "rs", "csharp": "cs", "ruby": "rb"
 }
 
+# Carousel with modern active tiers and generous fallbacks
+MODEL_CAROUSEL = [
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-1.5-flash"
+]
+
 def query_leetcode(query: str, variables: dict):
     res = requests.post(LEETCODE_GRAPHQL_URL, json={"query": query, "variables": variables}, headers=HEADERS)
     res.raise_for_status()
@@ -94,32 +105,21 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
 
-    # Priority list covering the newest models down to older fallbacks
-    MODEL_CAROUSEL = [
-        "gemini-3.6-flash",
-        "gemini-3.5-flash",
-        "gemini-3.5-flash-lite",
-        "gemini-2.5-flash",
-        "gemini-2.0-flash",
-        "gemini-1.5-flash"
-    ]
-
     for model in MODEL_CAROUSEL:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         try:
-            res = requests.post(url, json=payload, headers=headers, timeout=30)
+            # 60s timeout provides ample window for detailed algorithmic breakdown
+            res = requests.post(url, json=payload, headers=headers, timeout=60)
             
             if res.status_code == 200:
                 data = res.json()
                 return data["candidates"][0]["content"]["parts"][0]["text"]
             
-            # For 429 Quota errors, add a brief delay before trying the next model
             if res.status_code == 429:
-                print(f"[{model}] hit rate limit (429). Delaying 2 seconds before fallback...", file=sys.stderr)
+                print(f"[{model}] hit rate limit (429). Delaying 2s before fallback...", file=sys.stderr)
                 time.sleep(2)
                 continue
             
-            # For 404 (deprecation) or other errors, print to CI logs and cascade
             try:
                 error_message = res.json().get('error', {}).get('message', 'Unknown error')
             except ValueError:
@@ -133,7 +133,7 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     return "Analysis generation failed: all models in the fallback carousel returned errors. Check runner logs."
 
 def update_analysis_file(analysis_path: str, lang: str, new_analysis: str):
-    """Updates or appends a specific language section inside ANALYSIS.md."""
+    """Updates or appends a specific language section inside ANALYSIS.md safely without regex escape bugs."""
     section_header = f"## {lang.capitalize()} Analysis"
     
     if os.path.exists(analysis_path):
@@ -142,12 +142,12 @@ def update_analysis_file(analysis_path: str, lang: str, new_analysis: str):
     else:
         content = "# Complexity & Algorithmic Analysis\n\n"
 
-    # Regex to replace existing section for this language if it exists
     pattern = rf"{re.escape(section_header)}.*?(?=\n## |\Z)"
     new_section = f"{section_header}\n\n{new_analysis.strip()}\n\n"
 
+    # Using a callable lambda prevents re.sub from parsing backslashes as regex group references
     if re.search(pattern, content, flags=re.DOTALL):
-        content = re.sub(pattern, new_section, content, flags=re.DOTALL)
+        content = re.sub(pattern, lambda _: new_section, content, flags=re.DOTALL)
     else:
         content = content.rstrip() + "\n\n" + new_section
 
