@@ -1,0 +1,44 @@
+name: LeetCode PR Sync & Review
+
+on:
+  workflow_dispatch: # Manual trigger
+  schedule:
+    - cron: '0 0 * * *' # Every midnight UTC
+
+jobs:
+  sync-and-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      - name: Fetch Submissions and Run AI Analysis
+        env:
+          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
+          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python .github/scripts/sync_leetcode.py
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: sync accepted leetcode solutions with complexity analysis"
+          title: "LeetCode Daily Sync & Algorithmic Complexity Review"
+          body: |
+            ### Automated Submission Ingestion
+
+            New accepted solutions from LeetCode have been pulled and analyzed.
+            
+            - **Contents:** Solutions code + problem statements + `ANALYSIS.md`
+            - **Action Required:** Inspect the time/space complexity assessments below, test edge cases, and merge when satisfied.
+          branch: sync/leetcode-solutions
+          delete-branch: true
