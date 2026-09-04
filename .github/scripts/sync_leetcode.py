@@ -72,8 +72,6 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     if not GEMINI_API_KEY:
         return "AI Analysis skipped: `GEMINI_API_KEY` not configured."
 
-    # Using x-goog-api-key header keeps the key completely out of the URL
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     headers = {
         "Content-Type": "application/json",
         "x-goog-api-key": GEMINI_API_KEY
@@ -96,18 +94,43 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
 
-    try:
-        res = requests.post(url, json=payload, headers=headers, timeout=30)
-        res.raise_for_status()
-        data = res.json()
-        return data["candidates"][0]["content"]["parts"][0]["text"]
-    except requests.exceptions.HTTPError as err:
-        # Log sanitized error to CI runner output without exposing secrets
-        print(f"Gemini API HTTP Error ({err.response.status_code}): {err.response.text}", file=sys.stderr)
-        return "Analysis generation failed due to an API error. See workflow execution logs for details."
-    except Exception as err:
-        print(f"Unexpected error calling Gemini API: {type(err).__name__}", file=sys.stderr)
-        return "Analysis generation encountered an error. See workflow execution logs for details."
+    # Priority list covering the newest models down to older fallbacks
+    MODEL_CAROUSEL = [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.0-flash",
+        "gemini-1.5-flash"
+    ]
+
+    for model in MODEL_CAROUSEL:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        try:
+            res = requests.post(url, json=payload, headers=headers, timeout=30)
+            
+            if res.status_code == 200:
+                data = res.json()
+                return data["candidates"][0]["content"]["parts"][0]["text"]
+            
+            # For 429 Quota errors, add a brief delay before trying the next model
+            if res.status_code == 429:
+                print(f"[{model}] hit rate limit (429). Delaying 2 seconds before fallback...", file=sys.stderr)
+                time.sleep(2)
+                continue
+            
+            # For 404 (deprecation) or other errors, print to CI logs and cascade
+            try:
+                error_message = res.json().get('error', {}).get('message', 'Unknown error')
+            except ValueError:
+                error_message = res.text
+                
+            print(f"[{model}] failed with HTTP {res.status_code}: {error_message}. Falling back...", file=sys.stderr)
+
+        except requests.exceptions.RequestException as err:
+            print(f"[{model}] network error: {type(err).__name__}. Falling back...", file=sys.stderr)
+
+    return "Analysis generation failed: all models in the fallback carousel returned errors. Check runner logs."
 
 def update_analysis_file(analysis_path: str, lang: str, new_analysis: str):
     """Updates or appends a specific language section inside ANALYSIS.md."""
