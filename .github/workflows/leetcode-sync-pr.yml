@@ -5,12 +5,18 @@ on:
   schedule:
     - cron: '0 0 * * *' # Every midnight UTC
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync-and-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,18 +33,32 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python .github/scripts/sync_leetcode.py
 
+      - name: Update Portfolio README & Metrics
+        run: python .github/scripts/update_readme.py
+
+      - name: Append Metrics Note to PR Summary
+        run: |
+          python -c "
+          import os
+          if os.path.exists('PR_BODY.md'):
+              with open('PR_BODY.md', 'a', encoding='utf-8') as f:
+                  f.write('\n\n### 📈 Portfolio Update\n- Root `README.md` metrics, difficulty progress bars, and solutions catalog were refreshed.\n')
+          "
+
+      - name: Publish GitHub Step Summary
+        if: always()
+        run: |
+          if [ -f PR_BODY.md ]; then
+            cat PR_BODY.md >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "feat: sync accepted leetcode solutions with complexity analysis"
-          title: "LeetCode Daily Sync & Algorithmic Complexity Review"
-          body: |
-            ### Automated Submission Ingestion
-
-            New accepted solutions from LeetCode have been pulled and analyzed.
-            
-            - **Contents:** Solutions code + problem statements + `ANALYSIS.md`
-            - **Action Required:** Inspect the time/space complexity assessments below, test edge cases, and merge when satisfied.
+          commit-message: "feat(sync): ingest accepted leetcode solutions & update portfolio metrics"
+          title: "LeetCode Daily Ingestion & Algorithmic Complexity Review"
+          body-path: PR_BODY.md
+          base: main
           branch: sync/leetcode-solutions
           delete-branch: true
