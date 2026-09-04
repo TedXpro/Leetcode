@@ -3,6 +3,7 @@ import re
 import json
 import time
 import requests
+import sys
 
 LEETCODE_SESSION = os.environ.get("LEETCODE_SESSION")
 LEETCODE_CSRF_TOKEN = os.environ.get("LEETCODE_CSRF_TOKEN")
@@ -71,7 +72,13 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     if not GEMINI_API_KEY:
         return "AI Analysis skipped: `GEMINI_API_KEY` not configured."
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+    # Using x-goog-api-key header keeps the key completely out of the URL
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "x-goog-api-key": GEMINI_API_KEY
+    }
+
     prompt = f"""
     Analyze this accepted LeetCode solution for "{problem_title}" ({difficulty}) in {lang}:
 
@@ -88,13 +95,19 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
     """
     
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
+
     try:
-        res = requests.post(url, json=payload, headers={"Content-Type": "application/json"}, timeout=30)
+        res = requests.post(url, json=payload, headers=headers, timeout=30)
         res.raise_for_status()
-        candidates = res.json().get("candidates", [])
-        return candidates[0]["content"]["parts"][0]["text"]
-    except Exception as e:
-        return f"Failed to generate analysis: {str(e)}"
+        data = res.json()
+        return data["candidates"][0]["content"]["parts"][0]["text"]
+    except requests.exceptions.HTTPError as err:
+        # Log sanitized error to CI runner output without exposing secrets
+        print(f"Gemini API HTTP Error ({err.response.status_code}): {err.response.text}", file=sys.stderr)
+        return "Analysis generation failed due to an API error. See workflow execution logs for details."
+    except Exception as err:
+        print(f"Unexpected error calling Gemini API: {type(err).__name__}", file=sys.stderr)
+        return "Analysis generation encountered an error. See workflow execution logs for details."
 
 def update_analysis_file(analysis_path: str, lang: str, new_analysis: str):
     """Updates or appends a specific language section inside ANALYSIS.md."""
