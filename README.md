@@ -4,10 +4,10 @@
   <p><b>Automated Ingestion, Asymptotic Complexity Review, and Real-Time Statistical Index</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/Solved-588_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
+    <img src="https://img.shields.io/badge/Solved-593_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
     <img src="https://img.shields.io/badge/Easy-154-00b8a3?style=for-the-badge" alt="Easy" />
-    <img src="https://img.shields.io/badge/Medium-373-ffc01e?style=for-the-badge" alt="Medium" />
-    <img src="https://img.shields.io/badge/Hard-61-ff375f?style=for-the-badge" alt="Hard" />
+    <img src="https://img.shields.io/badge/Medium-377-ffc01e?style=for-the-badge" alt="Medium" />
+    <img src="https://img.shields.io/badge/Hard-62-ff375f?style=for-the-badge" alt="Hard" />
     <img src="https://img.shields.io/badge/Gemini_AI-Powered_Analysis-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini AI" />
   </p>
 
@@ -25,19 +25,19 @@ This repository maintains a comprehensive catalog of solved LeetCode challenges.
 
 | Difficulty | Solved | Percentage | Visual Ratio |
 | :--- | :---: | :---: | :--- |
-| 🟢 **Easy** | **154** | 26.2% | `███████░░░░░░░░░░░░░░░░░░` |
-| 🟡 **Medium** | **373** | 63.4% | `████████████████░░░░░░░░░` |
-| 🔴 **Hard** | **61** | 10.4% | `███░░░░░░░░░░░░░░░░░░░░░░` |
-| 🏆 **Total** | **588** | **100%** | **588 Accepted Solutions** |
+| 🟢 **Easy** | **154** | 26.0% | `██████░░░░░░░░░░░░░░░░░░░` |
+| 🟡 **Medium** | **377** | 63.6% | `████████████████░░░░░░░░░` |
+| 🔴 **Hard** | **62** | 10.5% | `███░░░░░░░░░░░░░░░░░░░░░░` |
+| 🏆 **Total** | **593** | **100%** | **593 Accepted Solutions** |
 
 ### 💻 Languages Distribution
 
 | Language | Solutions Count | Share | Progress Bar |
 | :--- | :---: | :---: | :--- |
-| **C++** | 511 | 98.5% | `████████████████████` |
+| **C++** | 511 | 97.1% | `███████████████████░` |
+| **Python** | 9 | 1.7% | `░░░░░░░░░░░░░░░░░░░░` |
 | **Java** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 | **JavaScript** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
-| **Python** | 2 | 0.4% | `░░░░░░░░░░░░░░░░░░░░` |
 
 ---
 
@@ -74,11 +74,12 @@ flowchart LR
 
 ## 📚 Solutions Catalog
 
-> Total Indexed Problems: **588** | Problems with AI Invariant Analysis: **0**
+> Total Indexed Problems: **593** | Problems with AI Invariant Analysis: **8**
 
 | # | Problem Title | Difficulty | Solutions | AI Complexity Analysis |
 | :---: | :--- | :---: | :---: | :---: |
 | 0002 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | 🟡 Medium | [`C++`](./0002-add-two-numbers/0002-add-two-numbers.cpp) | `-` |
+| 0004 | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | 🔴 Hard | [`Python`](./0004-median-of-two-sorted-arrays/0004-median-of-two-sorted-arrays.py) | [`🧠 ANALYSIS.md`](./0004-median-of-two-sorted-arrays/ANALYSIS.md) |
 | 0005 | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | 🟡 Medium | [`C++`](./0005-longest-palindromic-substring/0005-longest-palindromic-substring.cpp) | `-` |
 | 0006 | [Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/) | 🟡 Medium | [`C++`](./0006-zigzag-conversion/0006-zigzag-conversion.cpp) | `-` |
 | 0007 | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | 🟡 Medium | [`C++`](./0007-reverse-integer/0007-reverse-integer.cpp) | `-` |
@@ -177,7 +178,7 @@ flowchart LR
 | 0171 | [Excel Sheet Column Number](https://leetcode.com/problems/excel-sheet-column-number/) | 🟢 Easy | [`C++`](./0171-excel-sheet-column-number/0171-excel-sheet-column-number.cpp) | `-` |
 | 0172 | [Factorial Trailing Zeroes](https://leetcode.com/problems/factorial-trailing-zeroes/) | 🟡 Medium | [`C++`](./0172-factorial-trailing-zeroes/0172-factorial-trailing-zeroes.cpp) | `-` |
 | 0173 | [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator/) | 🟡 Medium | [`C++`](./0173-binary-search-tree-iterator/0173-binary-search-tree-iterator.cpp) | `-` |
-| 0175 | [Combine Two Tables](https://leetcode.com/problems/combine-two-tables/) | 🟢 Easy | [`Python`](./0175-combine-two-tables/0175-combine-two-tables.py) | `-` |
+| 0175 | [Combine Two Tables](https://leetcode.com/problems/combine-two-tables/) | 🟢 Easy | [`Python`](./0175-combine-two-tables/0175-combine-two-tables.py) | [`🧠 ANALYSIS.md`](./0175-combine-two-tables/ANALYSIS.md) |
 | 0179 | [Largest Number](https://leetcode.com/problems/largest-number/) | 🟡 Medium | [`C++`](./0179-largest-number/0179-largest-number.cpp) | `-` |
 | 0189 | [Rotate Array](https://leetcode.com/problems/rotate-array/) | 🟡 Medium | [`Code`](./0189-rotate-array/) | `-` |
 | 0190 | [Reverse Bits](https://leetcode.com/problems/reverse-bits/) | 🟢 Easy | [`C++`](./0190-reverse-bits/0190-reverse-bits.cpp) | `-` |
@@ -189,9 +190,11 @@ flowchart LR
 | 0203 | [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) | 🟢 Easy | [`C++`](./0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp) | `-` |
 | 0205 | [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/) | 🟢 Easy | [`C++`](./0205-isomorphic-strings/0205-isomorphic-strings.cpp) | `-` |
 | 0207 | [Course Schedule](https://leetcode.com/problems/course-schedule/) | 🟡 Medium | [`C++`](./0207-course-schedule/0207-course-schedule.cpp) | `-` |
+| 0208 | [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/) | 🟡 Medium | [`Python`](./0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.py) | [`🧠 ANALYSIS.md`](./0208-implement-trie-prefix-tree/ANALYSIS.md) |
+| 0211 | [Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) | 🟡 Medium | [`Python`](./0211-design-add-and-search-words-data-structure/0211-design-add-and-search-words-data-structure.py) | [`🧠 ANALYSIS.md`](./0211-design-add-and-search-words-data-structure/ANALYSIS.md) |
 | 0214 | [Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome/) | 🔴 Hard | [`C++`](./0214-shortest-palindrome/0214-shortest-palindrome.cpp) | `-` |
 | 0215 | [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | 🟡 Medium | [`C++`](./0215-kth-largest-element-in-an-array/0215-kth-largest-element-in-an-array.cpp) | `-` |
-| 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | 🟢 Easy | [`C++`](./0217-contains-duplicate/0217-contains-duplicate.cpp) | `-` |
+| 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/) | 🟢 Easy | [`C++`](./0217-contains-duplicate/0217-contains-duplicate.cpp) [`Python`](./0217-contains-duplicate/0217-contains-duplicate.py) | [`🧠 ANALYSIS.md`](./0217-contains-duplicate/ANALYSIS.md) |
 | 0219 | [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/) | 🟢 Easy | [`C++`](./0219-contains-duplicate-ii/0219-contains-duplicate-ii.cpp) | `-` |
 | 0222 | [Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/) | 🟢 Easy | [`C++`](./0222-count-complete-tree-nodes/0222-count-complete-tree-nodes.cpp) | `-` |
 | 0224 | [Basic Calculator](https://leetcode.com/problems/basic-calculator/) | 🔴 Hard | [`C++`](./0224-basic-calculator/0224-basic-calculator.cpp) | `-` |
@@ -206,7 +209,7 @@ flowchart LR
 | 0236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | 🟡 Medium | [`C++`](./0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.cpp) | `-` |
 | 0237 | [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/) | 🟡 Medium | [`C++`](./0237-delete-node-in-a-linked-list/0237-delete-node-in-a-linked-list.cpp) | `-` |
 | 0241 | [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/) | 🟡 Medium | [`C++`](./0241-different-ways-to-add-parentheses/0241-different-ways-to-add-parentheses.cpp) | `-` |
-| 0242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | 🟢 Easy | [`Code`](./0242-valid-anagram/) | `-` |
+| 0242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | 🟢 Easy | [`Python`](./0242-valid-anagram/0242-valid-anagram.py) | [`🧠 ANALYSIS.md`](./0242-valid-anagram/ANALYSIS.md) |
 | 0260 | [Single Number III](https://leetcode.com/problems/single-number-iii/) | 🟡 Medium | [`C++`](./0260-single-number-iii/0260-single-number-iii.cpp) | `-` |
 | 0263 | [Ugly Number](https://leetcode.com/problems/ugly-number/) | 🟢 Easy | [`C++`](./0263-ugly-number/0263-ugly-number.cpp) | `-` |
 | 0264 | [Ugly Number II](https://leetcode.com/problems/ugly-number-ii/) | 🟡 Medium | [`C++`](./0264-ugly-number-ii/0264-ugly-number-ii.cpp) | `-` |
@@ -242,6 +245,7 @@ flowchart LR
 | 0407 | [Trapping Rain Water II](https://leetcode.com/problems/trapping-rain-water-ii/) | 🔴 Hard | [`C++`](./0407-trapping-rain-water-ii/0407-trapping-rain-water-ii.cpp) | `-` |
 | 0409 | [Longest Palindrome](https://leetcode.com/problems/longest-palindrome/) | 🟢 Easy | [`C++`](./0409-longest-palindrome/0409-longest-palindrome.cpp) | `-` |
 | 0429 | [N-ary Tree Level Order Traversal](https://leetcode.com/problems/n-ary-tree-level-order-traversal/) | 🟡 Medium | [`C++`](./0429-n-ary-tree-level-order-traversal/0429-n-ary-tree-level-order-traversal.cpp) | `-` |
+| 0438 | [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/) | 🟡 Medium | [`Python`](./0438-find-all-anagrams-in-a-string/0438-find-all-anagrams-in-a-string.py) | [`🧠 ANALYSIS.md`](./0438-find-all-anagrams-in-a-string/ANALYSIS.md) |
 | 0440 | [K-th Smallest in Lexicographical Order](https://leetcode.com/problems/k-th-smallest-in-lexicographical-order/) | 🔴 Hard | [`C++`](./0440-k-th-smallest-in-lexicographical-order/0440-k-th-smallest-in-lexicographical-order.cpp) | `-` |
 | 0442 | [Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/) | 🟡 Medium | [`C++`](./0442-find-all-duplicates-in-an-array/0442-find-all-duplicates-in-an-array.cpp) | `-` |
 | 0443 | [String Compression](https://leetcode.com/problems/string-compression/) | 🟡 Medium | [`C++`](./0443-string-compression/0443-string-compression.cpp) | `-` |
@@ -296,6 +300,7 @@ flowchart LR
 | 0665 | [Non-decreasing Array](https://leetcode.com/problems/non-decreasing-array/) | 🟡 Medium | [`C++`](./0665-non-decreasing-array/0665-non-decreasing-array.cpp) | `-` |
 | 0670 | [Maximum Swap](https://leetcode.com/problems/maximum-swap/) | 🟡 Medium | [`C++`](./0670-maximum-swap/0670-maximum-swap.cpp) | `-` |
 | 0672 | [Bulb Switcher Ii](https://leetcode.com/problems/bulb-switcher-ii/) | 🟡 Medium | [`C++`](./0672-bulb-switcher-ii/0672-bulb-switcher-ii.cpp) | `-` |
+| 0676 | [Implement Magic Dictionary](https://leetcode.com/problems/implement-magic-dictionary/) | 🟡 Medium | [`Python`](./0676-implement-magic-dictionary/0676-implement-magic-dictionary.py) | [`🧠 ANALYSIS.md`](./0676-implement-magic-dictionary/ANALYSIS.md) |
 | 0678 | [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | 🟡 Medium | [`C++`](./0678-valid-parenthesis-string/0678-valid-parenthesis-string.cpp) | `-` |
 | 0680 | [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/) | 🟢 Easy | [`C++`](./0680-valid-palindrome-ii/0680-valid-palindrome-ii.cpp) | `-` |
 | 0684 | [Redundant Connection](https://leetcode.com/problems/redundant-connection/) | 🟡 Medium | [`C++`](./0684-redundant-connection/0684-redundant-connection.cpp) | `-` |
