@@ -39,11 +39,11 @@ LANG_EXTENSIONS = {
 # Carousel using active Gemini 3 family models with fallback hierarchy
 MODEL_CAROUSEL = [
     "gemini-3.8-flash",
+    "gemini-3.5-flash-lite",
     "gemini-3.7-flash",
+    "gemini-3.1-flash-lite",
     "gemini-3.6-flash",
     "gemini-3.5-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
     "gemini-3-flash-preview"
 ]
 
@@ -92,6 +92,7 @@ def get_submission_code(submission_id: str) -> dict:
 def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: str) -> Tuple[str, str]:
     """
     Evaluates algorithmic complexity with the Gemini model carousel.
+    Fails fast per model (10s timeout, no retry delay) and cascades instantly to the next model.
     Returns a tuple of (analysis_markdown, model_used).
     """
     if not GEMINI_API_KEY:
@@ -121,53 +122,42 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.2,
-            "maxOutputTokens": 2048
+            "maxOutputTokens": 1024
         }
     }
 
     for model in MODEL_CAROUSEL:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        
-        for attempt in range(1, 3):
-            try:
-                res = requests.post(url, json=payload, headers=headers, timeout=35)
-                
-                if res.status_code == 200:
-                    data = res.json()
-                    candidates = data.get("candidates", [])
-                    if candidates:
-                        parts = candidates[0].get("content", {}).get("parts", [])
-                        if parts and "text" in parts[0]:
-                            return parts[0]["text"].strip(), model
-                
-                if res.status_code == 429:
-                    wait_sec = attempt * 3
-                    print(f"[{model}] rate limit (429) attempt {attempt}/2. Waiting {wait_sec}s...", file=sys.stderr)
-                    time.sleep(wait_sec)
-                    continue
-                
-                if res.status_code == 503:
-                    wait_sec = attempt * 2
-                    print(f"[{model}] high demand (503) attempt {attempt}/2. Waiting {wait_sec}s...", file=sys.stderr)
-                    time.sleep(wait_sec)
-                    continue
-                
-                # Check error message
-                try:
-                    error_message = res.json().get('error', {}).get('message', res.text)
-                except Exception:
-                    error_message = res.text
-                
-                print(f"[{model}] HTTP {res.status_code}: {error_message}. Falling back...", file=sys.stderr)
-                break  # Don't retry same model for other errors (e.g. 404, 400)
+        try:
+            # Fast 10s timeout, no retry loops: if model is busy or times out, immediately cascade
+            res = requests.post(url, json=payload, headers=headers, timeout=10)
+            
+            if res.status_code == 200:
+                data = res.json()
+                candidates = data.get("candidates", [])
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts and "text" in parts[0]:
+                        return parts[0]["text"].strip(), model
 
-            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as err:
-                wait_sec = attempt * 2
-                print(f"[{model}] network error ({type(err).__name__}) attempt {attempt}/2. Waiting {wait_sec}s...", file=sys.stderr)
-                time.sleep(wait_sec)
-            except Exception as err:
-                print(f"[{model}] unexpected error: {type(err).__name__}: {err}. Falling back...", file=sys.stderr)
-                break
+            if res.status_code in (429, 503):
+                reason = "Rate limit (429)" if res.status_code == 429 else "High demand (503)"
+                print(f"[{model}] {reason}. Skipping to next model...", file=sys.stderr)
+                continue
+
+            # Log other status codes briefly
+            try:
+                err_msg = res.json().get('error', {}).get('message', res.text)
+            except Exception:
+                err_msg = res.text
+            print(f"[{model}] HTTP {res.status_code}: {err_msg[:120]}. Skipping...", file=sys.stderr)
+
+        except requests.exceptions.Timeout:
+            print(f"[{model}] timeout (>10s). Skipping to next model...", file=sys.stderr)
+        except requests.exceptions.RequestException as err:
+            print(f"[{model}] network error ({type(err).__name__}). Skipping...", file=sys.stderr)
+        except Exception as err:
+            print(f"[{model}] error ({type(err).__name__}). Skipping...", file=sys.stderr)
 
     fallback_msg = (
         "*Algorithmic analysis temporarily unavailable due to upstream API service demand. "
