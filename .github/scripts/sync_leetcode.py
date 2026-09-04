@@ -36,12 +36,12 @@ LANG_EXTENSIONS = {
     "swift": "swift", "kotlin": "kt", "scala": "scala", "php": "php"
 }
 
-# Carousel using active Gemini 3 family models with fallback hierarchy
+# Carousel initialized with the fastest, highest-availability tiers first
 MODEL_CAROUSEL = [
-    "gemini-3.8-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.7-flash",
     "gemini-3.1-flash-lite",
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-3.7-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash",
     "gemini-3-flash-preview"
@@ -91,10 +91,12 @@ def get_submission_code(submission_id: str) -> dict:
 
 def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: str) -> Tuple[str, str]:
     """
-    Evaluates algorithmic complexity with the Gemini model carousel.
-    Fails fast per model (10s timeout, no retry delay) and cascades instantly to the next model.
-    Returns a tuple of (analysis_markdown, model_used).
+    Evaluates algorithmic complexity with dynamic carousel memory.
+    - Working models are promoted to index 0 so subsequent problems use them immediately.
+    - Failing models (503, 429, timeout) are demoted to the back to avoid repeating failed attempts.
     """
+    global MODEL_CAROUSEL
+
     if not GEMINI_API_KEY:
         return "AI Analysis skipped: `GEMINI_API_KEY` not configured.", "None"
 
@@ -126,11 +128,14 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
         }
     }
 
-    for model in MODEL_CAROUSEL:
+    # Snapshot the current order so we can iterate safely while dynamically updating MODEL_CAROUSEL
+    candidate_models = list(MODEL_CAROUSEL)
+
+    for model in candidate_models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         try:
-            # Fast 10s timeout, no retry loops: if model is busy or times out, immediately cascade
-            res = requests.post(url, json=payload, headers=headers, timeout=10)
+            # Fast 7s timeout per model
+            res = requests.post(url, json=payload, headers=headers, timeout=7)
             
             if res.status_code == 200:
                 data = res.json()
@@ -138,26 +143,38 @@ def generate_ai_analysis(problem_title: str, difficulty: str, lang: str, code: s
                 if candidates:
                     parts = candidates[0].get("content", {}).get("parts", [])
                     if parts and "text" in parts[0]:
+                        # SUCCESS: Promote this working model to the very front of the carousel
+                        if model in MODEL_CAROUSEL:
+                            MODEL_CAROUSEL.remove(model)
+                            MODEL_CAROUSEL.insert(0, model)
                         return parts[0]["text"].strip(), model
+
+            # On failure: demote this model to the end of the carousel so next problems don't retry it first
+            if model in MODEL_CAROUSEL:
+                MODEL_CAROUSEL.remove(model)
+                MODEL_CAROUSEL.append(model)
 
             if res.status_code in (429, 503):
                 reason = "Rate limit (429)" if res.status_code == 429 else "High demand (503)"
-                print(f"[{model}] {reason}. Skipping to next model...", file=sys.stderr)
+                print(f"[{model}] {reason}. Demoting and trying next...", file=sys.stderr)
                 continue
 
-            # Log other status codes briefly
             try:
                 err_msg = res.json().get('error', {}).get('message', res.text)
             except Exception:
                 err_msg = res.text
-            print(f"[{model}] HTTP {res.status_code}: {err_msg[:120]}. Skipping...", file=sys.stderr)
+            print(f"[{model}] HTTP {res.status_code}: {err_msg[:100]}. Demoting...", file=sys.stderr)
 
         except requests.exceptions.Timeout:
-            print(f"[{model}] timeout (>10s). Skipping to next model...", file=sys.stderr)
-        except requests.exceptions.RequestException as err:
-            print(f"[{model}] network error ({type(err).__name__}). Skipping...", file=sys.stderr)
+            if model in MODEL_CAROUSEL:
+                MODEL_CAROUSEL.remove(model)
+                MODEL_CAROUSEL.append(model)
+            print(f"[{model}] timeout (>7s). Demoting and trying next...", file=sys.stderr)
         except Exception as err:
-            print(f"[{model}] error ({type(err).__name__}). Skipping...", file=sys.stderr)
+            if model in MODEL_CAROUSEL:
+                MODEL_CAROUSEL.remove(model)
+                MODEL_CAROUSEL.append(model)
+            print(f"[{model}] {type(err).__name__}. Demoting and trying next...", file=sys.stderr)
 
     fallback_msg = (
         "*Algorithmic analysis temporarily unavailable due to upstream API service demand. "
@@ -265,9 +282,19 @@ def write_pr_body(synced_items: List[dict], output_path: str = PR_BODY_FILE):
 
 def main():
     accepted = get_recent_accepted_submissions(limit=20)
+    
+    # Process only the newest submission per problem and language
+    unique_accepted = []
+    seen = set()
+    for sub in accepted:
+        key = (sub.get("titleSlug"), sub.get("lang"))
+        if key not in seen:
+            seen.add(key)
+            unique_accepted.append(sub)
+
     synced_items = []
 
-    for sub in accepted:
+    for sub in unique_accepted:
         slug = sub["titleSlug"]
         sub_id = sub["id"]
         lang = sub["lang"]
