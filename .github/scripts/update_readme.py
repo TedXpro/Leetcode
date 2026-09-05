@@ -33,8 +33,9 @@ def make_progress_bar(count: int, total: int, width: int = 25) -> str:
     filled = max(0, min(width, filled))
     return "█" * filled + "░" * (width - filled)
 
-def parse_problem_dir(d: str) -> dict:
-    m = re.match(r'^(\d{4})-(.*)$', d)
+def parse_problem_dir(dir_path: str) -> dict:
+    folder_name = os.path.basename(dir_path)
+    m = re.match(r'^(\d{4})-(.*)$', folder_name)
     if not m:
         return {}
 
@@ -44,7 +45,7 @@ def parse_problem_dir(d: str) -> dict:
     difficulty = "Medium"
     tags = []
     
-    readme_path = os.path.join(d, "README.md")
+    readme_path = os.path.join(dir_path, "README.md")
     if os.path.exists(readme_path):
         try:
             with open(readme_path, "r", encoding="utf-8", errors="ignore") as f:
@@ -83,17 +84,20 @@ def parse_problem_dir(d: str) -> dict:
 
     # Find solutions
     solution_links = []
-    has_analysis = os.path.exists(os.path.join(d, "ANALYSIS.md"))
-    
-    for fname in sorted(os.listdir(d)):
+    has_analysis = os.path.exists(os.path.join(dir_path, "ANALYSIS.md"))
+    norm_dir = dir_path.replace("\\", "/")
+    if not norm_dir.startswith("./"):
+        norm_dir = f"./{norm_dir}"
+
+    for fname in sorted(os.listdir(dir_path)):
         _, ext = os.path.splitext(fname)
         if ext in LANG_MAP:
             lang_label = LANG_MAP[ext]
-            rel_link = f"./{d}/{fname}"
+            rel_link = f"{norm_dir}/{fname}"
             solution_links.append((lang_label, rel_link))
 
     return {
-        "dir": d,
+        "dir": norm_dir,
         "num": num,
         "slug": slug,
         "title": title,
@@ -104,15 +108,17 @@ def parse_problem_dir(d: str) -> dict:
     }
 
 def generate_readme():
-    root_dirs = [
-        d for d in os.listdir(".")
-        if re.match(r'^\d{4}-', d) and os.path.isdir(d)
+    search_base = "solutions" if os.path.exists("solutions") else "."
+    raw_dirs = [
+        d for d in os.listdir(search_base)
+        if re.match(r'^\d{4}-', d) and os.path.isdir(os.path.join(search_base, d))
     ]
-    root_dirs.sort()
+    raw_dirs.sort()
 
     problems = []
-    for d in root_dirs:
-        info = parse_problem_dir(d)
+    for d in raw_dirs:
+        full_path = os.path.join(search_base, d) if search_base != "." else d
+        info = parse_problem_dir(full_path)
         if info:
             problems.append(info)
 
@@ -155,7 +161,7 @@ def generate_readme():
         "</div>\n",
         "---\n",
         "## 📌 Overview\n",
-        "This repository maintains a comprehensive catalog of solved LeetCode challenges. Each solution is synchronized through automated GitHub Actions workflows and evaluated with formal Big-O asymptotic analysis, algorithmic invariants, and boundary edge cases powered by the **Google Gemini AI Model Carousel** (`gemini-3.8-flash`, `gemini-3.7-flash`, etc.).\n",
+        "This repository maintains a comprehensive catalog of solved LeetCode challenges. Each solution is synchronized through automated GitHub Actions workflows and evaluated with formal Big-O asymptotic analysis, algorithmic invariants, and boundary edge cases powered by the **Google Gemini AI Model Carousel** (`gemini-3.1-flash-lite`, `gemini-3.8-flash`, etc.).\n",
         "## 📊 Metrics & Problem Breakdown\n",
         "### 🎯 Difficulty Distribution\n",
         "| Difficulty | Solved | Percentage | Visual Ratio |",
@@ -186,7 +192,7 @@ def generate_readme():
         "",
         "    subgraph GHA[\"⚙️ GitHub Actions Workflow\"]",
         "        B[\"sync_leetcode.py<br/>(Ingestion)\"]",
-        "        C[\"Gemini Model Carousel<br/>(3.8-Flash → 3.7-Flash → ...)\"]",
+        "        C[\"Gemini Model Carousel<br/>(3.1-Lite → 3.5-Lite → 3.8-Flash ...)\"]",
         "        D[\"update_readme.py<br/>(Dynamic Stats & Index)\"]",
         "        E[\"Automated PR (base: main)<br/>with Detailed AI Review\"]",
         "    end",
@@ -228,9 +234,9 @@ def generate_readme():
         if p["solutions"]:
             sol_links_str = " ".join([f"[`{label}`]({url})" for label, url in p["solutions"]])
         else:
-            sol_links_str = f"[`Code`](./{p['dir']}/)"
+            sol_links_str = f"[`Code`]({p['dir']}/)"
 
-        analysis_str = f"[`🧠 ANALYSIS.md`](./{p['dir']}/ANALYSIS.md)" if p["has_analysis"] else "`-`"
+        analysis_str = f"[`🧠 ANALYSIS.md`]({p['dir']}/ANALYSIS.md)" if p["has_analysis"] else "`-`"
         
         readme.append(f"| {num} | {problem_link} | {diff_str} | {sol_links_str} | {analysis_str} |")
 

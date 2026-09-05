@@ -16,7 +16,7 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
 LEETCODE_SESSION = os.environ.get("LEETCODE_SESSION")
 LEETCODE_CSRF_TOKEN = os.environ.get("LEETCODE_CSRF_TOKEN")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-SOLUTIONS_DIR = "."
+SOLUTIONS_DIR = "solutions"
 PR_BODY_FILE = "PR_BODY.md"
 
 LEETCODE_GRAPHQL_URL = "https://leetcode.com/graphql"
@@ -262,13 +262,14 @@ def write_pr_body(synced_items: List[dict], output_path: str = PR_BODY_FILE):
     content.append("\n### 🔍 Detailed Algorithmic & Complexity Breakdown\n")
 
     for item in synced_items:
+        repo_path = f"{SOLUTIONS_DIR}/{item['folder']}" if SOLUTIONS_DIR != "." else item['folder']
         content.append(
             f"<details>\n"
             f"<summary><b>{item['id']} - {item['title']} ({item['lang']})</b> [Reviewer: <code>{item['model']}</code>]</summary>\n\n"
             f"{item['analysis']}\n\n"
-            f"- **Repository Path:** [`{item['folder']}`](./{item['folder']}/)\n"
-            f"- **Problem Statement:** [`README.md`](./{item['folder']}/README.md)\n"
-            f"- **Detailed Analysis:** [`ANALYSIS.md`](./{item['folder']}/ANALYSIS.md)\n"
+            f"- **Repository Path:** [`{repo_path}`](./{repo_path}/)\n"
+            f"- **Problem Statement:** [`README.md`](./{repo_path}/README.md)\n"
+            f"- **Detailed Analysis:** [`ANALYSIS.md`](./{repo_path}/ANALYSIS.md)\n"
             f"</details>\n"
         )
 
