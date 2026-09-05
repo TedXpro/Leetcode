@@ -4,9 +4,9 @@
   <p><b>Automated Ingestion, Asymptotic Complexity Review, and Real-Time Statistical Index</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/Solved-593_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
-    <img src="https://img.shields.io/badge/Easy-154-00b8a3?style=for-the-badge" alt="Easy" />
-    <img src="https://img.shields.io/badge/Medium-377-ffc01e?style=for-the-badge" alt="Medium" />
+    <img src="https://img.shields.io/badge/Solved-597_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
+    <img src="https://img.shields.io/badge/Easy-157-00b8a3?style=for-the-badge" alt="Easy" />
+    <img src="https://img.shields.io/badge/Medium-378-ffc01e?style=for-the-badge" alt="Medium" />
     <img src="https://img.shields.io/badge/Hard-62-ff375f?style=for-the-badge" alt="Hard" />
     <img src="https://img.shields.io/badge/Gemini_AI-Powered_Analysis-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini AI" />
   </p>
@@ -25,17 +25,17 @@ This repository maintains a comprehensive catalog of solved LeetCode challenges.
 
 | Difficulty | Solved | Percentage | Visual Ratio |
 | :--- | :---: | :---: | :--- |
-| 🟢 **Easy** | **154** | 26.0% | `██████░░░░░░░░░░░░░░░░░░░` |
-| 🟡 **Medium** | **377** | 63.6% | `████████████████░░░░░░░░░` |
-| 🔴 **Hard** | **62** | 10.5% | `███░░░░░░░░░░░░░░░░░░░░░░` |
-| 🏆 **Total** | **593** | **100%** | **593 Accepted Solutions** |
+| 🟢 **Easy** | **157** | 26.3% | `███████░░░░░░░░░░░░░░░░░░` |
+| 🟡 **Medium** | **378** | 63.3% | `████████████████░░░░░░░░░` |
+| 🔴 **Hard** | **62** | 10.4% | `███░░░░░░░░░░░░░░░░░░░░░░` |
+| 🏆 **Total** | **597** | **100%** | **597 Accepted Solutions** |
 
 ### 💻 Languages Distribution
 
 | Language | Solutions Count | Share | Progress Bar |
 | :--- | :---: | :---: | :--- |
-| **C++** | 511 | 97.1% | `███████████████████░` |
-| **Python** | 9 | 1.7% | `░░░░░░░░░░░░░░░░░░░░` |
+| **C++** | 511 | 95.7% | `███████████████████░` |
+| **Python** | 17 | 3.2% | `█░░░░░░░░░░░░░░░░░░░` |
 | **Java** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 | **JavaScript** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 
@@ -74,7 +74,7 @@ flowchart LR
 
 ## 📚 Solutions Catalog
 
-> Total Indexed Problems: **593** | Problems with AI Invariant Analysis: **8**
+> Total Indexed Problems: **597** | Problems with AI Invariant Analysis: **16**
 
 | # | Problem Title | Difficulty | Solutions | AI Complexity Analysis |
 | :---: | :--- | :---: | :---: | :---: |
@@ -86,8 +86,9 @@ flowchart LR
 | 0008 | [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/) | 🟡 Medium | [`C++`](./solutions/0008-string-to-integer-atoi/0008-string-to-integer-atoi.cpp) | `-` |
 | 0012 | [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | 🟡 Medium | [`C++`](./solutions/0012-integer-to-roman/0012-integer-to-roman.cpp) | `-` |
 | 0015 | [3Sum](https://leetcode.com/problems/3sum/) | 🟡 Medium | [`C++`](./solutions/0015-3sum/0015-3sum.cpp) | `-` |
-| 0019 | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | 🟡 Medium | [`C++`](./solutions/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp) | `-` |
+| 0019 | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | 🟡 Medium | [`C++`](./solutions/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp) [`Python`](./solutions/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py) | [`🧠 ANALYSIS.md`](./solutions/0019-remove-nth-node-from-end-of-list/ANALYSIS.md) |
 | 0020 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | 🟢 Easy | [`Code`](./solutions/0020-valid-parentheses/) | `-` |
+| 0021 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | 🟢 Easy | [`Python`](./solutions/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | [`🧠 ANALYSIS.md`](./solutions/0021-merge-two-sorted-lists/ANALYSIS.md) |
 | 0022 | [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | 🟡 Medium | [`C++`](./solutions/0022-generate-parentheses/0022-generate-parentheses.cpp) | `-` |
 | 0025 | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | 🔴 Hard | [`C++`](./solutions/0025-reverse-nodes-in-k-group/0025-reverse-nodes-in-k-group.cpp) | `-` |
 | 0026 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | 🟢 Easy | [`C++`](./solutions/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.cpp) | `-` |
@@ -162,7 +163,8 @@ flowchart LR
 | 0138 | [Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/) | 🟡 Medium | [`C++`](./solutions/0138-copy-list-with-random-pointer/0138-copy-list-with-random-pointer.cpp) | `-` |
 | 0139 | [Word Break](https://leetcode.com/problems/word-break/) | 🟡 Medium | [`C++`](./solutions/0139-word-break/0139-word-break.cpp) | `-` |
 | 0140 | [Word Break II](https://leetcode.com/problems/word-break-ii/) | 🔴 Hard | [`Code`](./solutions/0140-word-break-ii/) | `-` |
-| 0141 | [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) | 🟢 Easy | [`C++`](./solutions/0141-linked-list-cycle/0141-linked-list-cycle.cpp) | `-` |
+| 0141 | [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) | 🟢 Easy | [`C++`](./solutions/0141-linked-list-cycle/0141-linked-list-cycle.cpp) [`Python`](./solutions/0141-linked-list-cycle/0141-linked-list-cycle.py) | [`🧠 ANALYSIS.md`](./solutions/0141-linked-list-cycle/ANALYSIS.md) |
+| 0142 | [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) | 🟡 Medium | [`Python`](./solutions/0142-linked-list-cycle-ii/0142-linked-list-cycle-ii.py) | [`🧠 ANALYSIS.md`](./solutions/0142-linked-list-cycle-ii/ANALYSIS.md) |
 | 0143 | [Reorder List](https://leetcode.com/problems/reorder-list/) | 🟡 Medium | [`C++`](./solutions/0143-reorder-list/0143-reorder-list.cpp) | `-` |
 | 0144 | [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) | 🟢 Easy | [`C++`](./solutions/0144-binary-tree-preorder-traversal/0144-binary-tree-preorder-traversal.cpp) | `-` |
 | 0145 | [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/) | 🟢 Easy | [`C++`](./solutions/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.cpp) | `-` |
@@ -189,6 +191,7 @@ flowchart LR
 | 0201 | [Bitwise AND of Numbers Range](https://leetcode.com/problems/bitwise-and-of-numbers-range/) | 🟡 Medium | [`C++`](./solutions/0201-bitwise-and-of-numbers-range/0201-bitwise-and-of-numbers-range.cpp) | `-` |
 | 0203 | [Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/) | 🟢 Easy | [`C++`](./solutions/0203-remove-linked-list-elements/0203-remove-linked-list-elements.cpp) | `-` |
 | 0205 | [Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/) | 🟢 Easy | [`C++`](./solutions/0205-isomorphic-strings/0205-isomorphic-strings.cpp) | `-` |
+| 0206 | [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) | 🟢 Easy | [`Python`](./solutions/0206-reverse-linked-list/0206-reverse-linked-list.py) | [`🧠 ANALYSIS.md`](./solutions/0206-reverse-linked-list/ANALYSIS.md) |
 | 0207 | [Course Schedule](https://leetcode.com/problems/course-schedule/) | 🟡 Medium | [`C++`](./solutions/0207-course-schedule/0207-course-schedule.cpp) | `-` |
 | 0208 | [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/) | 🟡 Medium | [`Python`](./solutions/0208-implement-trie-prefix-tree/0208-implement-trie-prefix-tree.py) | [`🧠 ANALYSIS.md`](./solutions/0208-implement-trie-prefix-tree/ANALYSIS.md) |
 | 0211 | [Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) | 🟡 Medium | [`Python`](./solutions/0211-design-add-and-search-words-data-structure/0211-design-add-and-search-words-data-structure.py) | [`🧠 ANALYSIS.md`](./solutions/0211-design-add-and-search-words-data-structure/ANALYSIS.md) |
@@ -204,7 +207,7 @@ flowchart LR
 | 0230 | [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/) | 🟡 Medium | [`C++`](./solutions/0230-kth-smallest-element-in-a-bst/0230-kth-smallest-element-in-a-bst.cpp) | `-` |
 | 0231 | [Power of Two](https://leetcode.com/problems/power-of-two/) | 🟢 Easy | [`Code`](./solutions/0231-power-of-two/) | `-` |
 | 0232 | [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/) | 🟢 Easy | [`C++`](./solutions/0232-implement-queue-using-stacks/0232-implement-queue-using-stacks.cpp) | `-` |
-| 0234 | [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) | 🟢 Easy | [`C++`](./solutions/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp) | `-` |
+| 0234 | [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) | 🟢 Easy | [`C++`](./solutions/0234-palindrome-linked-list/0234-palindrome-linked-list.cpp) [`Python`](./solutions/0234-palindrome-linked-list/0234-palindrome-linked-list.py) | [`🧠 ANALYSIS.md`](./solutions/0234-palindrome-linked-list/ANALYSIS.md) |
 | 0235 | [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) | 🟡 Medium | [`C++`](./solutions/0235-lowest-common-ancestor-of-a-binary-search-tree/0235-lowest-common-ancestor-of-a-binary-search-tree.cpp) | `-` |
 | 0236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | 🟡 Medium | [`C++`](./solutions/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.cpp) | `-` |
 | 0237 | [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/) | 🟡 Medium | [`C++`](./solutions/0237-delete-node-in-a-linked-list/0237-delete-node-in-a-linked-list.cpp) | `-` |
@@ -337,7 +340,7 @@ flowchart LR
 | 0872 | [Leaf Similar Trees](https://leetcode.com/problems/leaf-similar-trees/) | 🟡 Medium | [`Code`](./solutions/0872-leaf-similar-trees/) | `-` |
 | 0874 | [Walking Robot Simulation](https://leetcode.com/problems/walking-robot-simulation/) | 🟡 Medium | [`C++`](./solutions/0874-walking-robot-simulation/0874-walking-robot-simulation.cpp) | `-` |
 | 0876 | [Hand of Straights](https://leetcode.com/problems/hand-of-straights/) | 🟡 Medium | [`C++`](./solutions/0876-hand-of-straights/0876-hand-of-straights.cpp) | `-` |
-| 0876 | [Middle Of The Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) | 🟡 Medium | [`C++`](./solutions/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp) | `-` |
+| 0876 | [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/) | 🟢 Easy | [`C++`](./solutions/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.cpp) [`Python`](./solutions/0876-middle-of-the-linked-list/0876-middle-of-the-linked-list.py) | [`🧠 ANALYSIS.md`](./solutions/0876-middle-of-the-linked-list/ANALYSIS.md) |
 | 0881 | [Boats to Save People](https://leetcode.com/problems/boats-to-save-people/) | 🟡 Medium | [`JavaScript`](./solutions/0881-boats-to-save-people/0881-boats-to-save-people.js) | `-` |
 | 0884 | [Uncommon Words from Two Sentences](https://leetcode.com/problems/uncommon-words-from-two-sentences/) | 🟢 Easy | [`C++`](./solutions/0884-uncommon-words-from-two-sentences/0884-uncommon-words-from-two-sentences.cpp) | `-` |
 | 0907 | [Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/) | 🟡 Medium | [`C++`](./solutions/0907-sum-of-subarray-minimums/0907-sum-of-subarray-minimums.cpp) | `-` |
@@ -671,6 +674,7 @@ flowchart LR
 | 3264 | [Final Array State After K Multiplication Operations I](https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i/) | 🟢 Easy | [`C++`](./solutions/3264-final-array-state-after-k-multiplication-operations-i/3264-final-array-state-after-k-multiplication-operations-i.cpp) | `-` |
 | 3270 | [Find the Key of the Numbers](https://leetcode.com/problems/find-the-key-of-the-numbers/) | 🟢 Easy | [`C++`](./solutions/3270-find-the-key-of-the-numbers/3270-find-the-key-of-the-numbers.cpp) | `-` |
 | 3427 | [Special Array II](https://leetcode.com/problems/special-array-ii/) | 🟡 Medium | [`C++`](./solutions/3427-special-array-ii/3427-special-array-ii.cpp) | `-` |
+| 3904 | [Smallest Stable Index II](https://leetcode.com/problems/smallest-stable-index-ii/) | 🟡 Medium | [`Python`](./solutions/3904-smallest-stable-index-ii/3904-smallest-stable-index-ii.py) | [`🧠 ANALYSIS.md`](./solutions/3904-smallest-stable-index-ii/ANALYSIS.md) |
 
 ---
 <div align="center">
