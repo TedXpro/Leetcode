@@ -34,8 +34,8 @@ This repository maintains a comprehensive catalog of solved LeetCode challenges.
 
 | Language | Solutions Count | Share | Progress Bar |
 | :--- | :---: | :---: | :--- |
-| **C++** | 511 | 95.7% | `███████████████████░` |
-| **Python** | 17 | 3.2% | `█░░░░░░░░░░░░░░░░░░░` |
+| **C++** | 511 | 95.3% | `███████████████████░` |
+| **Python** | 19 | 3.5% | `█░░░░░░░░░░░░░░░░░░░` |
 | **Java** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 | **JavaScript** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 
@@ -74,7 +74,7 @@ flowchart LR
 
 ## 📚 Solutions Catalog
 
-> Total Indexed Problems: **597** | Problems with AI Invariant Analysis: **16**
+> Total Indexed Problems: **597** | Problems with AI Invariant Analysis: **18**
 
 | # | Problem Title | Difficulty | Solutions | AI Complexity Analysis |
 | :---: | :--- | :---: | :---: | :---: |
@@ -87,7 +87,7 @@ flowchart LR
 | 0012 | [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | 🟡 Medium | [`C++`](./solutions/0012-integer-to-roman/0012-integer-to-roman.cpp) | `-` |
 | 0015 | [3Sum](https://leetcode.com/problems/3sum/) | 🟡 Medium | [`C++`](./solutions/0015-3sum/0015-3sum.cpp) | `-` |
 | 0019 | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | 🟡 Medium | [`C++`](./solutions/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.cpp) [`Python`](./solutions/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py) | [`🧠 ANALYSIS.md`](./solutions/0019-remove-nth-node-from-end-of-list/ANALYSIS.md) |
-| 0020 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | 🟢 Easy | [`Code`](./solutions/0020-valid-parentheses/) | `-` |
+| 0020 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) | 🟢 Easy | [`Python`](./solutions/0020-valid-parentheses/0020-valid-parentheses.py) | [`🧠 ANALYSIS.md`](./solutions/0020-valid-parentheses/ANALYSIS.md) |
 | 0021 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | 🟢 Easy | [`Python`](./solutions/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | [`🧠 ANALYSIS.md`](./solutions/0021-merge-two-sorted-lists/ANALYSIS.md) |
 | 0022 | [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | 🟡 Medium | [`C++`](./solutions/0022-generate-parentheses/0022-generate-parentheses.cpp) | `-` |
 | 0025 | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | 🔴 Hard | [`C++`](./solutions/0025-reverse-nodes-in-k-group/0025-reverse-nodes-in-k-group.cpp) | `-` |
@@ -168,7 +168,7 @@ flowchart LR
 | 0143 | [Reorder List](https://leetcode.com/problems/reorder-list/) | 🟡 Medium | [`C++`](./solutions/0143-reorder-list/0143-reorder-list.cpp) | `-` |
 | 0144 | [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/) | 🟢 Easy | [`C++`](./solutions/0144-binary-tree-preorder-traversal/0144-binary-tree-preorder-traversal.cpp) | `-` |
 | 0145 | [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/) | 🟢 Easy | [`C++`](./solutions/0145-binary-tree-postorder-traversal/0145-binary-tree-postorder-traversal.cpp) | `-` |
-| 0146 | [LRU Cache](https://leetcode.com/problems/lru-cache/) | 🟡 Medium | [`C++`](./solutions/0146-lru-cache/0146-lru-cache.cpp) | `-` |
+| 0146 | [LRU Cache](https://leetcode.com/problems/lru-cache/) | 🟡 Medium | [`C++`](./solutions/0146-lru-cache/0146-lru-cache.cpp) [`Python`](./solutions/0146-lru-cache/0146-lru-cache.py) | [`🧠 ANALYSIS.md`](./solutions/0146-lru-cache/ANALYSIS.md) |
 | 0148 | [Sort List](https://leetcode.com/problems/sort-list/) | 🟡 Medium | [`C++`](./solutions/0148-sort-list/0148-sort-list.cpp) | `-` |
 | 0150 | [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) | 🟡 Medium | [`C++`](./solutions/0150-evaluate-reverse-polish-notation/0150-evaluate-reverse-polish-notation.cpp) | `-` |
 | 0151 | [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/) | 🟡 Medium | [`Code`](./solutions/0151-reverse-words-in-a-string/) | `-` |
