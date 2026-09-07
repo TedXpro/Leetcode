@@ -4,10 +4,10 @@
   <p><b>Automated Ingestion, Asymptotic Complexity Review, and Real-Time Statistical Index</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/Solved-597_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
-    <img src="https://img.shields.io/badge/Easy-157-00b8a3?style=for-the-badge" alt="Easy" />
-    <img src="https://img.shields.io/badge/Medium-378-ffc01e?style=for-the-badge" alt="Medium" />
-    <img src="https://img.shields.io/badge/Hard-62-ff375f?style=for-the-badge" alt="Hard" />
+    <img src="https://img.shields.io/badge/Solved-600_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
+    <img src="https://img.shields.io/badge/Easy-158-00b8a3?style=for-the-badge" alt="Easy" />
+    <img src="https://img.shields.io/badge/Medium-379-ffc01e?style=for-the-badge" alt="Medium" />
+    <img src="https://img.shields.io/badge/Hard-63-ff375f?style=for-the-badge" alt="Hard" />
     <img src="https://img.shields.io/badge/Gemini_AI-Powered_Analysis-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini AI" />
   </p>
 
@@ -25,17 +25,17 @@ This repository maintains a comprehensive catalog of solved LeetCode challenges.
 
 | Difficulty | Solved | Percentage | Visual Ratio |
 | :--- | :---: | :---: | :--- |
-| 🟢 **Easy** | **157** | 26.3% | `███████░░░░░░░░░░░░░░░░░░` |
-| 🟡 **Medium** | **378** | 63.3% | `████████████████░░░░░░░░░` |
-| 🔴 **Hard** | **62** | 10.4% | `███░░░░░░░░░░░░░░░░░░░░░░` |
-| 🏆 **Total** | **597** | **100%** | **597 Accepted Solutions** |
+| 🟢 **Easy** | **158** | 26.3% | `███████░░░░░░░░░░░░░░░░░░` |
+| 🟡 **Medium** | **379** | 63.2% | `████████████████░░░░░░░░░` |
+| 🔴 **Hard** | **63** | 10.5% | `███░░░░░░░░░░░░░░░░░░░░░░` |
+| 🏆 **Total** | **600** | **100%** | **600 Accepted Solutions** |
 
 ### 💻 Languages Distribution
 
 | Language | Solutions Count | Share | Progress Bar |
 | :--- | :---: | :---: | :--- |
-| **C++** | 511 | 95.3% | `███████████████████░` |
-| **Python** | 19 | 3.5% | `█░░░░░░░░░░░░░░░░░░░` |
+| **C++** | 511 | 94.5% | `███████████████████░` |
+| **Python** | 24 | 4.4% | `█░░░░░░░░░░░░░░░░░░░` |
 | **Java** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 | **JavaScript** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 
@@ -74,7 +74,7 @@ flowchart LR
 
 ## 📚 Solutions Catalog
 
-> Total Indexed Problems: **597** | Problems with AI Invariant Analysis: **18**
+> Total Indexed Problems: **600** | Problems with AI Invariant Analysis: **23**
 
 | # | Problem Title | Difficulty | Solutions | AI Complexity Analysis |
 | :---: | :--- | :---: | :---: | :---: |
@@ -123,7 +123,7 @@ flowchart LR
 | 0079 | [Word Search](https://leetcode.com/problems/word-search/) | 🟡 Medium | [`C++`](./solutions/0079-word-search/0079-word-search.cpp) [`Java`](./solutions/0079-word-search/0079-word-search.java) | `-` |
 | 0080 | [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/) | 🟡 Medium | [`Code`](./solutions/0080-remove-duplicates-from-sorted-array-ii/) | `-` |
 | 0082 | [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) | 🟡 Medium | [`C++`](./solutions/0082-remove-duplicates-from-sorted-list-ii/0082-remove-duplicates-from-sorted-list-ii.cpp) | `-` |
-| 0084 | [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) | 🔴 Hard | [`C++`](./solutions/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.cpp) | `-` |
+| 0084 | [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/) | 🔴 Hard | [`C++`](./solutions/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.cpp) [`Python`](./solutions/0084-largest-rectangle-in-histogram/0084-largest-rectangle-in-histogram.py) | [`🧠 ANALYSIS.md`](./solutions/0084-largest-rectangle-in-histogram/ANALYSIS.md) |
 | 0085 | [Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/) | 🔴 Hard | [`C++`](./solutions/0085-maximal-rectangle/0085-maximal-rectangle.cpp) | `-` |
 | 0086 | [Partition List](https://leetcode.com/problems/partition-list/) | 🟡 Medium | [`C++`](./solutions/0086-partition-list/0086-partition-list.cpp) | `-` |
 | 0088 | [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/) | 🟢 Easy | [`Code`](./solutions/0088-merge-sorted-array/) | `-` |
@@ -173,6 +173,7 @@ flowchart LR
 | 0150 | [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/) | 🟡 Medium | [`C++`](./solutions/0150-evaluate-reverse-polish-notation/0150-evaluate-reverse-polish-notation.cpp) | `-` |
 | 0151 | [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/) | 🟡 Medium | [`Code`](./solutions/0151-reverse-words-in-a-string/) | `-` |
 | 0152 | [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/) | 🟡 Medium | [`C++`](./solutions/0152-maximum-product-subarray/0152-maximum-product-subarray.cpp) | `-` |
+| 0155 | [Min Stack](https://leetcode.com/problems/min-stack/) | 🟡 Medium | [`Python`](./solutions/0155-min-stack/0155-min-stack.py) | [`🧠 ANALYSIS.md`](./solutions/0155-min-stack/ANALYSIS.md) |
 | 0165 | [Compare Version Numbers](https://leetcode.com/problems/compare-version-numbers/) | 🟡 Medium | [`JavaScript`](./solutions/0165-compare-version-numbers/0165-compare-version-numbers.js) | `-` |
 | 0167 | [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | 🟡 Medium | [`C++`](./solutions/0167-two-sum-ii-input-array-is-sorted/0167-two-sum-ii-input-array-is-sorted.cpp) | `-` |
 | 0168 | [Excel Sheet Column Title](https://leetcode.com/problems/excel-sheet-column-title/) | 🟢 Easy | [`C++`](./solutions/0168-excel-sheet-column-title/0168-excel-sheet-column-title.cpp) | `-` |
@@ -315,7 +316,7 @@ flowchart LR
 | 0726 | [Number of Atoms](https://leetcode.com/problems/number-of-atoms/) | 🔴 Hard | [`C++`](./solutions/0726-number-of-atoms/0726-number-of-atoms.cpp) | `-` |
 | 0729 | [My Calendar I](https://leetcode.com/problems/my-calendar-i/) | 🟡 Medium | [`C++`](./solutions/0729-my-calendar-i/0729-my-calendar-i.cpp) | `-` |
 | 0731 | [My Calendar II](https://leetcode.com/problems/my-calendar-ii/) | 🟡 Medium | [`C++`](./solutions/0731-my-calendar-ii/0731-my-calendar-ii.cpp) | `-` |
-| 0739 | [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | 🟡 Medium | [`C++`](./solutions/0739-daily-temperatures/0739-daily-temperatures.cpp) | `-` |
+| 0739 | [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | 🟡 Medium | [`C++`](./solutions/0739-daily-temperatures/0739-daily-temperatures.cpp) [`Python`](./solutions/0739-daily-temperatures/0739-daily-temperatures.py) | [`🧠 ANALYSIS.md`](./solutions/0739-daily-temperatures/ANALYSIS.md) |
 | 0752 | [Open the Lock](https://leetcode.com/problems/open-the-lock/) | 🟡 Medium | [`C++`](./solutions/0752-open-the-lock/0752-open-the-lock.cpp) | `-` |
 | 0769 | [Max Chunks To Make Sorted](https://leetcode.com/problems/max-chunks-to-make-sorted/) | 🟡 Medium | [`C++`](./solutions/0769-max-chunks-to-make-sorted/0769-max-chunks-to-make-sorted.cpp) | `-` |
 | 0773 | [Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle/) | 🔴 Hard | [`C++`](./solutions/0773-sliding-puzzle/0773-sliding-puzzle.cpp) | `-` |
@@ -501,6 +502,7 @@ flowchart LR
 | 1769 | [Minimum Number of Operations to Move All Balls to Each Box](https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/) | 🟡 Medium | [`C++`](./solutions/1769-minimum-number-of-operations-to-move-all-balls-to-each-box/1769-minimum-number-of-operations-to-move-all-balls-to-each-box.cpp) | `-` |
 | 1791 | [Find Center of Star Graph](https://leetcode.com/problems/find-center-of-star-graph/) | 🟢 Easy | [`C++`](./solutions/1791-find-center-of-star-graph/1791-find-center-of-star-graph.cpp) | `-` |
 | 1792 | [Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio/) | 🟡 Medium | [`C++`](./solutions/1792-maximum-average-pass-ratio/1792-maximum-average-pass-ratio.cpp) | `-` |
+| 1793 | [Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray/) | 🔴 Hard | [`Python`](./solutions/1793-maximum-score-of-a-good-subarray/1793-maximum-score-of-a-good-subarray.py) | [`🧠 ANALYSIS.md`](./solutions/1793-maximum-score-of-a-good-subarray/ANALYSIS.md) |
 | 1813 | [Sentence Similarity III](https://leetcode.com/problems/sentence-similarity-iii/) | 🟡 Medium | [`C++`](./solutions/1813-sentence-similarity-iii/1813-sentence-similarity-iii.cpp) | `-` |
 | 1814 | [Count Nice Pairs in an Array](https://leetcode.com/problems/count-nice-pairs-in-an-array/) | 🟡 Medium | [`C++`](./solutions/1814-count-nice-pairs-in-an-array/1814-count-nice-pairs-in-an-array.cpp) | `-` |
 | 1823 | [Find the Winner of the Circular Game](https://leetcode.com/problems/find-the-winner-of-the-circular-game/) | 🟡 Medium | [`C++`](./solutions/1823-find-the-winner-of-the-circular-game/1823-find-the-winner-of-the-circular-game.cpp) | `-` |
@@ -634,6 +636,7 @@ flowchart LR
 | 2751 | [Robot Collisions](https://leetcode.com/problems/robot-collisions/) | 🔴 Hard | [`C++`](./solutions/2751-robot-collisions/2751-robot-collisions.cpp) | `-` |
 | 2762 | [Continuous Subarrays](https://leetcode.com/problems/continuous-subarrays/) | 🟡 Medium | [`C++`](./solutions/2762-continuous-subarrays/2762-continuous-subarrays.cpp) | `-` |
 | 2779 | [Maximum Beauty of an Array After Applying Operation](https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation/) | 🟡 Medium | [`C++`](./solutions/2779-maximum-beauty-of-an-array-after-applying-operation/2779-maximum-beauty-of-an-array-after-applying-operation.cpp) | `-` |
+| 2784 | [Check if Array is Good](https://leetcode.com/problems/check-if-array-is-good/) | 🟢 Easy | [`Python`](./solutions/2784-check-if-array-is-good/2784-check-if-array-is-good.py) | [`🧠 ANALYSIS.md`](./solutions/2784-check-if-array-is-good/ANALYSIS.md) |
 | 2785 | [Sort Vowels in a String](https://leetcode.com/problems/sort-vowels-in-a-string/) | 🟡 Medium | [`Code`](./solutions/2785-sort-vowels-in-a-string/) | `-` |
 | 2807 | [Insert Greatest Common Divisors in Linked List](https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/) | 🟡 Medium | [`C++`](./solutions/2807-insert-greatest-common-divisors-in-linked-list/2807-insert-greatest-common-divisors-in-linked-list.cpp) | `-` |
 | 2812 | [Find the Safest Path in a Grid](https://leetcode.com/problems/find-the-safest-path-in-a-grid/) | 🟡 Medium | [`C++`](./solutions/2812-find-the-safest-path-in-a-grid/2812-find-the-safest-path-in-a-grid.cpp) | `-` |
