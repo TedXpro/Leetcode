@@ -4,10 +4,10 @@
   <p><b>Automated Ingestion, Asymptotic Complexity Review, and Real-Time Statistical Index</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/Solved-600_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
+    <img src="https://img.shields.io/badge/Solved-601_Problems-orange?style=for-the-badge&logo=leetcode&logoColor=white" alt="Total Solved" />
     <img src="https://img.shields.io/badge/Easy-158-00b8a3?style=for-the-badge" alt="Easy" />
     <img src="https://img.shields.io/badge/Medium-379-ffc01e?style=for-the-badge" alt="Medium" />
-    <img src="https://img.shields.io/badge/Hard-63-ff375f?style=for-the-badge" alt="Hard" />
+    <img src="https://img.shields.io/badge/Hard-64-ff375f?style=for-the-badge" alt="Hard" />
     <img src="https://img.shields.io/badge/Gemini_AI-Powered_Analysis-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini AI" />
   </p>
 
@@ -26,16 +26,16 @@ This repository maintains a comprehensive catalog of solved LeetCode challenges.
 | Difficulty | Solved | Percentage | Visual Ratio |
 | :--- | :---: | :---: | :--- |
 | 🟢 **Easy** | **158** | 26.3% | `███████░░░░░░░░░░░░░░░░░░` |
-| 🟡 **Medium** | **379** | 63.2% | `████████████████░░░░░░░░░` |
-| 🔴 **Hard** | **63** | 10.5% | `███░░░░░░░░░░░░░░░░░░░░░░` |
-| 🏆 **Total** | **600** | **100%** | **600 Accepted Solutions** |
+| 🟡 **Medium** | **379** | 63.1% | `████████████████░░░░░░░░░` |
+| 🔴 **Hard** | **64** | 10.6% | `███░░░░░░░░░░░░░░░░░░░░░░` |
+| 🏆 **Total** | **601** | **100%** | **601 Accepted Solutions** |
 
 ### 💻 Languages Distribution
 
 | Language | Solutions Count | Share | Progress Bar |
 | :--- | :---: | :---: | :--- |
-| **C++** | 511 | 94.5% | `███████████████████░` |
-| **Python** | 24 | 4.4% | `█░░░░░░░░░░░░░░░░░░░` |
+| **C++** | 511 | 94.3% | `███████████████████░` |
+| **Python** | 25 | 4.6% | `█░░░░░░░░░░░░░░░░░░░` |
 | **Java** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 | **JavaScript** | 3 | 0.6% | `░░░░░░░░░░░░░░░░░░░░` |
 
@@ -74,7 +74,7 @@ flowchart LR
 
 ## 📚 Solutions Catalog
 
-> Total Indexed Problems: **600** | Problems with AI Invariant Analysis: **23**
+> Total Indexed Problems: **601** | Problems with AI Invariant Analysis: **24**
 
 | # | Problem Title | Difficulty | Solutions | AI Complexity Analysis |
 | :---: | :--- | :---: | :---: | :---: |
@@ -212,6 +212,7 @@ flowchart LR
 | 0235 | [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) | 🟡 Medium | [`C++`](./solutions/0235-lowest-common-ancestor-of-a-binary-search-tree/0235-lowest-common-ancestor-of-a-binary-search-tree.cpp) | `-` |
 | 0236 | [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | 🟡 Medium | [`C++`](./solutions/0236-lowest-common-ancestor-of-a-binary-tree/0236-lowest-common-ancestor-of-a-binary-tree.cpp) | `-` |
 | 0237 | [Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/) | 🟡 Medium | [`C++`](./solutions/0237-delete-node-in-a-linked-list/0237-delete-node-in-a-linked-list.cpp) | `-` |
+| 0239 | [Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/) | 🔴 Hard | [`Python`](./solutions/0239-sliding-window-maximum/0239-sliding-window-maximum.py) | [`🧠 ANALYSIS.md`](./solutions/0239-sliding-window-maximum/ANALYSIS.md) |
 | 0241 | [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/) | 🟡 Medium | [`C++`](./solutions/0241-different-ways-to-add-parentheses/0241-different-ways-to-add-parentheses.cpp) | `-` |
 | 0242 | [Valid Anagram](https://leetcode.com/problems/valid-anagram/) | 🟢 Easy | [`Python`](./solutions/0242-valid-anagram/0242-valid-anagram.py) | [`🧠 ANALYSIS.md`](./solutions/0242-valid-anagram/ANALYSIS.md) |
 | 0260 | [Single Number III](https://leetcode.com/problems/single-number-iii/) | 🟡 Medium | [`C++`](./solutions/0260-single-number-iii/0260-single-number-iii.cpp) | `-` |
